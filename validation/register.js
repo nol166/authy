@@ -1,13 +1,13 @@
 const validator = require('validator')
 const isEmpty = require('is-empty')
 
-const vaidateRegisterInput = (data) => {
+const vaidateRegisterInput = data => {
     const { name, email, password, password2 } = data
     const dataParts = [name, email, password, password2]
     let errors = {}
 
     // set everything to empty strings
-    dataParts.forEach((thing) => {
+    dataParts.forEach(thing => {
         if (isEmpty(thing)) {
             thing = ''
         } else {

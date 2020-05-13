@@ -11,17 +11,17 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-const connectMe = (uri) => {
+const connectMe = uri => {
     mongoose
         .connect(uri, { useNewUrlParser: true })
-        .then((res) =>
+        .then(res =>
             console.log(
                 `MongoDB connected as ${
                     res.connections[0].user || 'local'
                 } on ${res.connections[0].host}`
             )
         )
-        .catch((err) => console.log(err))
+        .catch(err => console.log(err))
 }
 
 if (!isDev) {
