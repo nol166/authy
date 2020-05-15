@@ -7,6 +7,9 @@ const localURI = process.env.MONGO_DEV
 const isDev = process.env.NODE_ENV !== 'production'
 const app = express()
 
+// let api = require('./routes/api/users')
+// app.use(api)
+
 // bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

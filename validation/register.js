@@ -2,6 +2,7 @@ const validator = require('validator')
 const isEmpty = require('is-empty')
 
 const vaidateRegisterInput = data => {
+    console.log(data)
     const { name, email, password, password2 } = data
     const dataParts = [name, email, password, password2]
     let errors = {}

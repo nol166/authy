@@ -21,10 +21,9 @@ const validateLoginInput = ({ email, password }) => {
     }
 
     return {
-        errors, isEmpty(errors)
+        errors,
+        isValid: isEmpty(errors),
     }
 }
 
 module.exports = validateLoginInput
-
-
