@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 
 // import validation
 const validateRegister = require('../../validation/register')
+    .vaidateRegisterInput
 const validateLogin = require('../../validation/login')
 
 // user model
@@ -45,8 +46,8 @@ router.post('/register', (req, res) => {
 // @route POST api/users/login
 // @desc Login user and return JWT token
 // @access Public
-router.post('login', (req, res) => {
-    const { errors, isValid } = validateRegister(req.body)
+router.post('/login', (req, res) => {
+    const { errors, isValid } = validateLogin(req.body)
     // check validation
     if (!isValid) {
         return res.status(400).json(errors)

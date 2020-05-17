@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const passport = require('passport')
 const mongoURI = process.env.MONGO_URI
 const localURI = process.env.MONGO_DEV
 const isDev = process.env.NODE_ENV !== 'production'
@@ -10,8 +11,8 @@ const app = express()
 // bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-let usersAPI = require('./routes/api/users')
-app.use(usersAPI)
+
+const users = require('./routes/api/users')
 
 const connectMe = uri => {
     mongoose
@@ -21,12 +22,15 @@ const connectMe = uri => {
                 `MongoDB connected as ${
                     res.connections[0].user || 'local'
                 } on ${res.connections[0].host}`,
-                uri,
-                res.connections[0].db.s
+                uri
             )
         )
         .catch(err => console.log(err))
 }
+
+app.use(passport.initialize()) // passport middleware
+require('./config/passport')(passport) // passport config
+app.use('/api/users', users)
 
 if (!isDev) {
     connectMe(mongoURI)

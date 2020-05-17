@@ -16,6 +16,10 @@ const vaidateRegisterInput = data => {
         }
     })
 
+    if (!email.includes('@')) {
+        errors.email = 'Please provide a valid email'
+    }
+
     // pw check
     if (!password2) {
         errors.password = 'Please provide password confirmation'
@@ -39,4 +43,4 @@ const vaidateRegisterInput = data => {
     }
 }
 
-module.exports = vaidateRegisterInput
+module.exports = { vaidateRegisterInput, isEmpty }
