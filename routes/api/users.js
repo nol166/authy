@@ -42,4 +42,47 @@ router.post('/register', (req, res) => {
     })
 })
 
+// @route POST api/users/login
+// @desc Login user and return JWT token
+// @access Public
+router.post('login', (req, res) => {
+    const { errors, isValid } = validateRegister(req.body)
+    // check validation
+    if (!isValid) {
+        return res.status(400).json(errors)
+    }
+
+    const { email, password } = req.body
+
+    // find user by email
+    Users.findOne({ email }).then(user => {
+        if (!user) {
+            return res.status(404).json({ emailnotfound: 'Email not found' })
+        }
+    })
+
+    // check pass
+    bcrypt.compare(password, user.password).then(isMatch => {
+        if (isMatch) {
+            // user match & create JWT payload
+            const payload = {
+                id: user.id,
+                name: user.name,
+            }
+
+            // sign token
+            jwt.sign(payload, keys, { expiresIn: 31556926 }, (err, token) => {
+                res.json({
+                    success: true,
+                    token: 'Bearer ' + token,
+                })
+            })
+        } else {
+            return res
+                .status(400)
+                .json({ passwordincorrect: 'Password is incorrect' })
+        }
+    })
+})
+
 module.exports = router

@@ -20,7 +20,9 @@ const connectMe = uri => {
             console.log(
                 `MongoDB connected as ${
                     res.connections[0].user || 'local'
-                } on ${res.connections[0].host}`
+                } on ${res.connections[0].host}`,
+                uri,
+                res.connections[0].db.s
             )
         )
         .catch(err => console.log(err))

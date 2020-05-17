@@ -1,10 +1,5 @@
 const validator = require('validator')
-const isEmpty = function (value) {
-    value === undefined ||
-        value === null ||
-        (typeof value === 'Object' && Object.keys(value).length === 0) ||
-        (typeof value === 'string' && value.trim().length === 0)
-}
+const isEmpty = require('./isEmpty')
 
 const vaidateRegisterInput = data => {
     console.log(data)
@@ -44,4 +39,4 @@ const vaidateRegisterInput = data => {
     }
 }
 
-module.exports = { vaidateRegisterInput, isEmpty }
+module.exports = vaidateRegisterInput
