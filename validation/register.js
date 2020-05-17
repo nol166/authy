@@ -1,5 +1,10 @@
 const validator = require('validator')
-const isEmpty = require('is-empty')
+const isEmpty = function (value) {
+    value === undefined ||
+        value === null ||
+        (typeof value === 'Object' && Object.keys(value).length === 0) ||
+        (typeof value === 'string' && value.trim().length === 0)
+}
 
 const vaidateRegisterInput = data => {
     console.log(data)
@@ -17,7 +22,11 @@ const vaidateRegisterInput = data => {
     })
 
     // pw check
-    if (validator.isEmpty(password) || validator.isEmpty(password2)) {
+    if (!password2) {
+        errors.password = 'Please provide password confirmation'
+    }
+
+    if (isEmpty(password) || isEmpty(password2)) {
         errors.password = 'Password field required'
     }
     // pw length
@@ -35,4 +44,4 @@ const vaidateRegisterInput = data => {
     }
 }
 
-module.exports = vaidateRegisterInput
+module.exports = { vaidateRegisterInput, isEmpty }

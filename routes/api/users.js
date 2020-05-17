@@ -11,17 +11,7 @@ const validateLogin = require('../../validation/login')
 // user model
 const User = require('../../models/User')
 
-const hashPass = user => {
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            if (err) throw err
-            user.password = hash
-            user.save()
-                .then(user => res.json(user))
-                .catch(err => console.log(err))
-        })
-    })
-}
+const hashPass = user => {}
 
 // @route POST api/users/register
 // @desc Register user
@@ -40,7 +30,17 @@ router.post('/register', (req, res) => {
                 email: req.body.email,
                 password: req.body.password,
             }
-            hashPass(newUser)
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    if (err) throw err
+                    newUser.password = hash
+                    newUser
+                        .save()
+                        .then(newUser => res.json(newUser))
+                        .catch(err => console.log(err))
+                })
+                console.log(newUser)
+            })
         }
     })
 })

@@ -1,5 +1,5 @@
 const validator = require('validator')
-const isEmpty = require('is-empty')
+const { isEmpty } = require('./register')
 
 const validateLoginInput = ({ email, password }) => {
     errors = {}
@@ -9,14 +9,14 @@ const validateLoginInput = ({ email, password }) => {
     data.password = isEmpty(password) ? password : ''
 
     // email check
-    if (validator.isEmpty(email)) {
+    if (isEmpty(email)) {
         errors.email = 'You must enter an email address'
-    } else if (!validator.isEmpty(email)) {
+    } else if (!isEmpty(email)) {
         errors.email = 'Email is invalid'
     }
 
     // pass check
-    if (validator.isEmpty(password)) {
+    if (isEmpty(password)) {
         errors.password = 'You must choose a password'
     }
 
