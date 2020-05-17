@@ -10,9 +10,6 @@ const validateLogin = require('../../validation/login')
 
 // user model
 const User = require('../../models/User')
-
-const hashPass = user => {}
-
 // @route POST api/users/register
 // @desc Register user
 // @access Public
