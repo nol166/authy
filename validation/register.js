@@ -2,10 +2,11 @@ const validator = require('validator')
 const isEmpty = require('./isEmpty')
 
 const vaidateRegisterInput = data => {
-    console.log(data)
+    // console.log(data)
     const { name, email, password, password2 } = data
     const dataParts = [name, email, password, password2]
     let errors = {}
+    let emailReg = /[\w-]+@([\w-]+\.)+[\w-]+/
 
     // set everything to empty strings
     dataParts.forEach(thing => {
@@ -16,7 +17,7 @@ const vaidateRegisterInput = data => {
         }
     })
 
-    if (!email.includes('@')) {
+    if (!email.match(emailReg)) {
         errors.email = 'Please provide a valid email'
     }
 
@@ -43,4 +44,4 @@ const vaidateRegisterInput = data => {
     }
 }
 
-module.exports = { vaidateRegisterInput, isEmpty }
+module.exports = vaidateRegisterInput
