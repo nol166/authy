@@ -6,7 +6,6 @@ const vaidateRegisterInput = data => {
     const { name, email, password, password2 } = data
     const dataParts = [name, email, password, password2]
     let errors = {}
-    let emailReg = /[\w-]+@([\w-]+\.)+[\w-]+/
 
     // set everything to empty strings
     dataParts.forEach(thing => {
@@ -17,7 +16,7 @@ const vaidateRegisterInput = data => {
         }
     })
 
-    if (!email.match(emailReg)) {
+    if (!validator.isEmail(email)) {
         errors.email = 'Please provide a valid email'
     }
 

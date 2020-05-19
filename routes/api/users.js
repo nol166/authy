@@ -57,7 +57,7 @@ router.post('/login', (req, res) => {
     const { email, password } = req.body
 
     // find user by email
-    Users.findOne({ email }).then(user => {
+    User.findOne({ email }).then(user => {
         if (!user) {
             return res.status(404).json({ emailnotfound: 'Email not found' })
         }
@@ -65,32 +65,36 @@ router.post('/login', (req, res) => {
         if (user) {
             res.status(200).json(user)
         }
-    })
+        // check pass
+        bcrypt.compare(password, user.password).then(isMatch => {
+            if (isMatch) {
+                console.log('its a match')
+                // user match & create JWT payload
+                const payload = {
+                    id: user.id,
+                    name: user.name,
+                }
 
-    // check pass
-    bcrypt.compare(password, user.password).then(isMatch => {
-        if (isMatch) {
-            console.log('its a match')
-            // user match & create JWT payload
-            const payload = {
-                id: user.id,
-                name: user.name,
+                // sign token
+                jwt.sign(
+                    payload,
+                    keys,
+                    { expiresIn: 31556926 },
+                    (err, token) => {
+                        res.json({
+                            success: true,
+                            token: 'Bearer ' + token,
+                        })
+                    }
+                )
+            } else {
+                console.log('not a match')
+
+                return res
+                    .status(400)
+                    .json({ passwordincorrect: 'Password is incorrect' })
             }
-
-            // sign token
-            jwt.sign(payload, keys, { expiresIn: 31556926 }, (err, token) => {
-                res.json({
-                    success: true,
-                    token: 'Bearer ' + token,
-                })
-            })
-        } else {
-            console.log('not a match')
-
-            return res
-                .status(400)
-                .json({ passwordincorrect: 'Password is incorrect' })
-        }
+        })
     })
 })
 
