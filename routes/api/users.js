@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-// const keys
+const keys = process.env.SECRET_OR_KEY
 
 // import validation
 const validateRegister = require('../../validation/register')
