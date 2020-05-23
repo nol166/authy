@@ -10,6 +10,7 @@ const validateLogin = require('../../validation/login')
 
 // user model
 const User = require('../../models/User')
+
 // @route POST api/users/register
 // @desc Register user
 // @access Public
@@ -111,7 +112,7 @@ router.get('/list', (req, res) => {
     }
 })
 
-// @route POST api/users/list
+// @route POST api/users/find
 // @desc Return a single user
 // @access Private
 router.get('/find', (req, res) => {
@@ -126,5 +127,3 @@ router.get('/find', (req, res) => {
 })
 
 module.exports = router
-
-// curl --resolve 127.0.0.1:5000/api/users/list http://www.example.com/
