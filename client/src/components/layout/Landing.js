@@ -10,15 +10,15 @@ class Landing extends Component {
                 <div className="row">
                     <div className="col s12 center-align">
                         <h4>
-                            <b>Build</b> a login/auth app with the{' '}
-                            <span style={{ fontFamily: 'monospace' }}>
+                            <b>Authy</b>{' '}
+                            {/* <span style={{ fontFamily: 'monospace' }}>
                                 MERN
                             </span>{' '}
-                            stack from scratch
+                            stack from scratch */}
                         </h4>
                         <p className="flow-text grey-text text-darken-1">
-                            Create a (minimal) full-stack app with user
-                            authentication via passport and JWTs
+                            "Neque porro quisquam est qui dolorem ipsum quia
+                            dolor sit amet, consectetur, adipisci velit..."
                         </p>
                         <br />
                         <div className="col s6">
@@ -42,7 +42,7 @@ class Landing extends Component {
                                     borderRadius: '3px',
                                     letterSpacing: '1.5px',
                                 }}
-                                className="btn btn-large btn-flat waves-effect white black-text"
+                                className="btn btn-large btn-flat waves-effect red black-text"
                             >
                                 Log In
                             </Link>
