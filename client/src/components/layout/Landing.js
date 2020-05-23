@@ -17,8 +17,7 @@ class Landing extends Component {
                             stack from scratch */}
                         </h4>
                         <p className="flow-text grey-text text-darken-1">
-                            "Neque porro quisquam est qui dolorem ipsum quia
-                            dolor sit amet, consectetur, adipisci velit..."
+                            mern app with user authentication
                         </p>
                         <br />
                         <div className="col s6">
@@ -42,7 +41,7 @@ class Landing extends Component {
                                     borderRadius: '3px',
                                     letterSpacing: '1.5px',
                                 }}
-                                className="btn btn-large btn-flat waves-effect red black-text"
+                                className="btn btn-large btn-flat waves-effect red white-text"
                             >
                                 Log In
                             </Link>
