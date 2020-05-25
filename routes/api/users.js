@@ -102,6 +102,7 @@ router.post('/login', (req, res) => {
 // @route POST api/users/list
 // @desc Return list of all users
 // @access Private
+// TODO: figure out a better way to make this a protected route
 router.get('/list', (req, res) => {
     console.log(req.hostname)
     if (req.hostname === 'localhost') {
@@ -115,6 +116,7 @@ router.get('/list', (req, res) => {
 // @route POST api/users/find
 // @desc Return a single user
 // @access Private
+// TODO: figure out a better way to protect this route
 router.get('/find', (req, res) => {
     console.log(req.hostname)
     if (req.hostname === 'localhost') {
