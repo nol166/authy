@@ -14,7 +14,12 @@ export class Navbar extends Component {
                             }}
                             className="col s5 brand-logo center black-text"
                         >
-                            🔓
+                            <span
+                                description="aria-label aria-labelledby"
+                                role="img"
+                            >
+                                🔓
+                            </span>
                         </Link>
                     </div>
                 </nav>
