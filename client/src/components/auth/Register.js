@@ -21,7 +21,7 @@ function Register() {
                 <input
                     name="name"
                     ref={register({ required: true })}
-                    placeholder="Appleseed"
+                    placeholder="username"
                 />
                 {errors.name && 'User name is required.'}
                 <input
@@ -29,10 +29,21 @@ function Register() {
                     ref={register({ required: true })}
                     placeholder="*******"
                 />
-                {errors.age && 'Please enter number for age.'}
-                <input name="password2" ref={register} placeholder="*******" />
-                {errors.age && 'Please enter number for age.'}
-                <input type="submit" content="hello" />
+                {errors.password && 'Please enter password.'}
+                <input
+                    name="password2"
+                    ref={register({ required: true })}
+                    placeholder="*******"
+                />
+                {errors.password2 && 'Please confirm number for password.'}
+                <button
+                    className="btn waves-effect waves-light"
+                    type="submit"
+                    name="action"
+                >
+                    register
+                    <i className="material-icons right" />
+                </button>
             </form>
         </div>
 

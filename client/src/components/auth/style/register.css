@@ -6,3 +6,19 @@
     display: flex;
     flex-direction: column;
 }
+
+.register {
+    align-items: center;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .formS {
+        width: 100%;
+        padding: 20px;
+    }
+}
