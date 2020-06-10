@@ -1,8 +1,8 @@
-### authy
+# authy
 
 This app is meant as an exercise in setting up a MERN application with user authentication.
 
-Tech used:
+### Tech used:
 
 -   bcrypt
 -   mongodb
@@ -12,6 +12,6 @@ Tech used:
 -   jwt
 -   passport
 
-Front end:
+### Front end:
 
 -   react
