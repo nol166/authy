@@ -23,26 +23,18 @@ export default function Register() {
     }
 
     const handleSubmit = (e) => {
+        alert('submitted')
         e.preventDefault()
     }
 
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit} className="">
-                <input type="email" name="email" />
-                <input type="username" name="username" placeholder="" />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="person@jmdev.io"
-                />
-                <input
-                    type="passwword"
-                    name="password2"
-                    placeholder="person@jmdev.io"
-                />
-                <input type="email" placeholder="person@jmdev.io" />
-                <input type="submit" />
+                <input type="email" name="email" placeholder="john@jmdev.io" />
+                <input type="text" name="username" placeholder="jmdev" />
+                <input type="password" name="password" placeholder="******" />
+                <input type="password" name="password2" placeholder="******" />
+                <button type="submit">Register</button>
             </form>
         </div>
     )

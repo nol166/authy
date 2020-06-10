@@ -9,3 +9,9 @@ Tech used:
 -   mongoose
 -   bodyparser
 -   validator
+-   jwt
+-   passport
+
+Front end:
+
+-   react
