@@ -15,7 +15,8 @@ This app is meant as an exercise in setting up a MERN application with user auth
 ### Front end:
 
 -   react
+-   react-mdl
 
-### Screenshot
+### Screenshot:
 
 ![screenshot](./assets/authy_screen.png 'authy')
